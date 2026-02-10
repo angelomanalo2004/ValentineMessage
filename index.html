@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Message💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #ff9ebd;
+  --hotpink: #ff4f9a;
+  --softpink: #fff0f6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ffe4ee, #ffd6e7);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 20px;
+  position: relative;
+}
+
+.screen {
+  display: none;
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  animation: fadeIn 1s ease forwards;
+}
+
+.screen.active {
+  display: block;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  background: var(--hotpink);
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--pink);
+}
+
+.flower-btn {
+  font-size: 6rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  animation: float 3s ease-in-out infinite;
+}
+
+.flower-btn:hover {
+  transform: scale(1.2);
+}
+
+.circle-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle-frame img {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 4px solid var(--softpink);
+  box-shadow: 0 5px 15px rgba(255, 79, 154, 0.5);
+  animation: floatBackground 6s ease-in-out infinite alternate;
+}
+
+.bouquet-btn {
+  font-size: 11rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.4s ease;
+}
+
+.zoom-fade {
+  animation: zoomFade 0.8s forwards;
+}
+
+@keyframes zoomFade {
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.envelope {
+  width: 70vw;
+  max-width: 350px;
+  height: 45vw;
+  max-height: 250px;
+  background: var(--pink);
+  margin: 40px auto;
+  position: relative;
+  border-radius: 12px;
+  cursor: pointer;
+  perspective: 800px;
+  z-index: 1;
+}
+
+.envelope .flap {
+  position: absolute;
+  inset: 0;
+  background: var(--hotpink);
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.envelope.open .flap {
+  transform: rotateX(-180deg);
+}
+
+.letter {
+  background: white;
+  width: 85%;
+  max-width: 300px;
+  max-height: 60vh;
+  padding: 20px;
+  margin: -40% auto 0;
+  border-radius: 12px;
+  display: none;
+  animation: slideUp 0.8s ease forwards;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  z-index: 3;
+  position: relative;
+  overflow-y: auto;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.7;
+  transform: rotate(45deg);
+  animation: fall 3s linear infinite;
+  border-radius: 2px;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10px) rotate(0); opacity: 1; }
+  to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes floatBackground {
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div class="screen active" id="screen1">
+  <h1>Happy Valentines My Love 💕</h1>
+  <button class="flower-btn" onclick="goToScreen2()">🌸</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="screen2">
+  <h1>Flowers for you 💐</h1>
+
+  <div class="circle-frame" id="circleFrame">
+    <img src="pic1.jpeg">
+    <img src="pic2.jpg">
+    <img src="pic3.jpeg">
+    <img src="pic4.jpeg">
+    <img src="pic5.jpeg">
+    <img src="pic6.jpg">
+    <img src="pic7.jpg">
+    <img src="pic8.jpeg">
+    <img src="pic9.jpg">
+    <img src="pic10.jpg">
+  </div>
+
+  <div class="bouquet-btn" id="bouquetBtn">💐</div>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen" id="screen3">
+  <h1>A letter, just for you 💗</h1>
+  <div class="envelope" onclick="openLetter()">
+    <div class="flap"></div>
+  </div>
+
+  <div class="letter" id="letter">
+    <p>
+      Dear Ayumi,
+      <br><br>
+      Happy Valentine's Day my love. On this day, I want you to truly feel
+      how deeply you are loved and how certain I am of my love for you not just today, but everyday and always. 
+      You have a beauty that goes far beyond what the eyes can see, a quiet look that reminds me of a 
+      blooming lily, you're pure, gentle, and you become more and more lovely with each passing day.
+      <br><br>
+      The more time goes by the more I admire you and your heart, your strength, your kindness, your compassion, 
+      the way your presence brings peace and warmth into my life, and your love for me. 
+      <br><br>
+      Loving you feels effortless and right, and I am grateful for every moment we share and to have you in my life,
+      I want to be the one who makes you feel as loved and cherished as you make me feel, to be the one who supports you 
+      on everything that you do. 
+      <br><br>
+      I promise to keep choosing you, cherishing you, and loving you through every season, today 
+      and for all the days ahead of us my love.💗
+      <br><br>
+      With all my heart,
+      <br>
+      Angelo💗
+    </p>
+    <button onclick="restart()">Back to Start</button>
+  </div>
+</div>
+
+<div id="confetti"></div>
+
+<script>
+// Screen 2
+function goToScreen2() {
+  document.getElementById('screen1').classList.remove('active');
+  document.getElementById('screen2').classList.add('active');
+
+  resetBouquet();
+  positionCirclePhotos();
+}
+
+// Position photos
+function positionCirclePhotos() {
+  const photos = document.querySelectorAll('#circleFrame img');
+  const frame = document.getElementById('circleFrame');
+  const radius = Math.min(window.innerWidth, window.innerHeight) / 2.3;
+  const cx = frame.offsetWidth / 2;
+  const cy = frame.offsetHeight / 2;
+
+  photos.forEach((photo, i) => {
+    const angle = (i / photos.length) * Math.PI * 2;
+    photo.style.left = cx + radius * Math.cos(angle) - photo.offsetWidth / 2 + 'px';
+    photo.style.top  = cy + radius * Math.sin(angle) - photo.offsetHeight / 2 + 'px';
+  });
+}
+
+// Bouquet click
+document.getElementById('bouquetBtn').addEventListener('click', () => {
+  const btn = document.getElementById('bouquetBtn');
+  btn.classList.add('zoom-fade');
+
+  setTimeout(() => {
+    document.getElementById('screen2').classList.remove('active');
+    document.getElementById('screen3').classList.add('active');
+  }, 800);
+});
+
+// Open letter
+function openLetter() {
+  document.querySelector('.envelope').classList.add('open');
+
+  setTimeout(() => {
+    document.getElementById('letter').style.display = 'block';
+    startConfetti();
+  }, 600);
+}
+
+// Restart
+function restart() {
+  stopConfetti();
+
+  document.getElementById('letter').style.display = 'none';
+  document.querySelector('.envelope').classList.remove('open');
+
+  resetBouquet();
+
+  document.getElementById('screen3').classList.remove('active');
+  document.getElementById('screen2').classList.remove('active');
+  document.getElementById('screen1').classList.add('active');
+}
+
+// Reset bouquet
+function resetBouquet() {
+  const btn = document.getElementById('bouquetBtn');
+  btn.classList.remove('zoom-fade');
+  btn.style.opacity = '1';
+  btn.style.transform = '';
+}
+
+// Confetti
+let confettiInterval;
+function startConfetti() {
+  const c = document.getElementById('confetti');
+  confettiInterval = setInterval(() => {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * innerWidth + 'px';
+    piece.style.background = `hsl(${Math.random()*360},80%,60%)`;
+    c.appendChild(piece);
+    setTimeout(() => piece.remove(), 3000);
+  }, 100);
+}
+
+function stopConfetti() {
+  clearInterval(confettiInterval);
+  document.getElementById('confetti').innerHTML = '';
+}
+
+window.addEventListener('resize', positionCirclePhotos);
+</script>
+
+</body>
+</html>
